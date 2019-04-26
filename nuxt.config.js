@@ -52,24 +52,9 @@ export default {
     extend(config, ctx) {
     }
   },
-  /**
-  {
-    name: 'lang',
-    path: '/:lang',
-    component: '/Users/amitavita/Vue/nuxt/pages/_lang/index.vue',
-    chunkName: 'pages/_lang/index'
-  },
-  {
-    name: 'lang-page',
-    path: '/:lang/page',
-    component: '/Users/amitavita/Vue/nuxt/pages/_lang/page.vue',
-    chunkName: 'pages/_lang/page'
-  }
-   */
   router: {
     middleware: 'i18n',
     extendRoutes(routes, resolve) {
-      console.log("TCL: extendRoutes -> routes 1", routes);
       const defaultLangRoutes = [];
       routes.forEach(item => {
         if (item.name === 'lang' || item.name.substr(0, 5) === 'lang-') {
@@ -88,8 +73,7 @@ export default {
       })
       defaultLangRoutes.forEach(item => {
         routes.unshift(item);
-      })
-      console.log("TCL: extendRoutes -> routes 2", routes);      
+      })   
     }
   }
 }
